@@ -4,7 +4,7 @@ Created on 4. 5. 2015
 @author: janbednarik
 '''
 
-from Tkinter import *
+from tkinter import *
 from trajectory import Trajectory
 from clustering import Clustering
 import sys

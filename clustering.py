@@ -9,7 +9,7 @@ import numpy as np
 import math
 from common import *
 from scipy.linalg import sqrtm
-from scipy.io.matlab.mio5_utils import scipy
+#from scipy.io.matlab.mio5_utils import scipy
 from scipy.cluster.vq import kmeans
 from scipy.cluster.vq import kmeans2
 import random
@@ -47,6 +47,7 @@ class Clustering:
         t1 = self.trajectories[t1idx]
         t2 = self.trajectories[t2idx]
 
+        print(" ..... {}".format(len(t1))) #getPrefixSum
         distances = np.zeros(len(t1))
         t1pointsRelPos = [t1.getPrefixSum()[i] / t1.length() for i in range(len(t1))]
         t2pointsRelPos = [t2.getPrefixSum()[i] / t2.length() for i in range(len(t2))]
@@ -259,11 +260,20 @@ class Clustering:
 
 # Testing the module
 if __name__ == "__main__":
-    trajs = [[(0.0, 0.0), (1.0, 1.0), (2.0, 2.0), (3.0, 3.0)],
+    list_trajs = [[(0.0, 0.0), (1.0, 1.0), (2.0, 2.0), (3.0, 3.0)],
              [(0.5, 0.5), (1.5, 1.5), (2.5, 2.5), (3.5, 3.5)],
              [(12.0, -5.0), (10.0, -2.5), (8.0, 0.0), (6.0, 2.5)],
              [(14.0, -7.0), (12.0, -4.5), (10.0, -2.0), (8.0, 0.5)]]
 
+    trajs = []
+    for trj in list_trajs:
+        temp = Trajectory(-1)
+        for pt in trj:
+            temp.addPoint(pt)
+        trajs.append(temp)
+        #print(trj, temp) 
+    
+			 
     clust = Clustering()
     res = clust.clusterAgglomerartive(trajs, 2)
 

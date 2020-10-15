@@ -1,3 +1,13 @@
+# ECO:
+python clustering.py
+
+Traceback (most recent call last):
+  File "clustering.py", line 278, in <module>
+    res = clust.clusterAgglomerartive(trajs, 2)
+  File "clustering.py", line 156, in clusterAgglomerartive
+    clusters[t1idx].extend(clusters[t2idx])
+TypeError: list indices must be integers or slices, not numpy.float64
+
 # TrajectoryClustering
 This application is capable of fully automatic clustering of 2D trajectory data. Why is this useful? Many systems today rely on capturing the data with one main property - a time-varying location which can be thought of as a trajectory. Whether it is ecologists who track wild animals, meteorologists who track hurricane flows or traffic researchers who analyse the common patterns in traffic, they all work with huge amount of data wchich must be (auomatically) analyzed in order to derive meaningful information.
 
